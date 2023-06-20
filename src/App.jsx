@@ -24,8 +24,8 @@ function App() {
                     <Route path="/species" element={<Species />} />
                     <Route path="/vehicles" element={<Vehicles />} />
                     <Route path="/films" element={<Films />} />
-                    <Route path="/*" element={<Error />} />
                 </Route>
+                <Route path="/*" element={<Error />} />
             </Routes>
         </BrowserRouter>
     );

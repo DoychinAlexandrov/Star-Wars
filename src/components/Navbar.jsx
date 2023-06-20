@@ -1,16 +1,39 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Logo from "../assets/logo.png";
+import Wrapper from "../wrappers/Navbar";
 
 const Navbar = () => {
     return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to="/people">People</Link>
-            <Link to="/planets">Planets</Link>
-            <Link to="/spaceships">Spaceships</Link>
-            <Link to="/species">Species</Link>
-            <Link to="/vehicles">Vehicles</Link>
-            <Link to="/films">Films</Link>
-        </nav>
+        <Wrapper>
+            <span className="logo">
+                <img className="logo" src={Logo} alt="logo" />
+            </span>
+            <div className="nav-center">
+                <div className="nav-links">
+                    <NavLink to="/" className="nav-link">
+                        Home
+                    </NavLink>
+                    <NavLink to="/people" className="nav-link">
+                        People
+                    </NavLink>
+                    <NavLink to="/planets" className="nav-link">
+                        Planets
+                    </NavLink>
+                    <NavLink to="/spaceships" className="nav-link">
+                        Spaceships
+                    </NavLink>
+                    <NavLink to="/species" className="nav-link">
+                        Species
+                    </NavLink>
+                    <NavLink to="/vehicles" className="nav-link">
+                        Vehicles
+                    </NavLink>
+                    <NavLink to="/films" className="nav-link">
+                        Films
+                    </NavLink>
+                </div>
+            </div>
+        </Wrapper>
     );
 };
 
