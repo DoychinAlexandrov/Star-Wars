@@ -4,7 +4,7 @@ import {
     Home,
     People,
     Planets,
-    Spaceships,
+    Story,
     Species,
     Vehicles,
     Error,
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
+                path: "story",
+                element: <Story />,
+            },
+            {
                 path: "people",
                 element: <People />,
             },
@@ -30,10 +34,7 @@ const router = createBrowserRouter([
                 path: "planets",
                 element: <Planets />,
             },
-            {
-                path: "spaceships",
-                element: <Spaceships />,
-            },
+
             {
                 path: "species",
                 element: <Species />,
