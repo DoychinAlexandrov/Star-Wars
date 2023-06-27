@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Modal from "../components/PeopleModal";
 import Wrapper from "../wrappers/People";
+import Footer from "../components/Footer";
 
 function App() {
     const [people, setPeople] = useState([]);
@@ -104,6 +105,7 @@ function App() {
                             onClose={handleCloseModal}
                         />
                     )}
+                    <Footer />
                 </div>
             )}
         </Wrapper>
