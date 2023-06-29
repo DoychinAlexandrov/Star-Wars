@@ -9,6 +9,9 @@ import GameSection from "../components/About";
 const Home = () => {
     return (
         <Wrapper>
+            <div className="opening">
+                <p>ALL OF YOUR STAR WARS FAVORITES NOW STREAMING ON DISNEY+</p>
+            </div>
             <div className="hero-section">
                 <img className="movie-image" src={Hero} alt="Star Wars Movie" />
                 <div className="hero-content">

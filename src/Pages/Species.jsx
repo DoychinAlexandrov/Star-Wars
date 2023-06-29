@@ -5,12 +5,24 @@ import Wrapper from "../wrappers/Species";
 
 const SpeciesSlider = () => {
     const [species, setSpecies] = useState([]);
-
     useEffect(() => {
-        fetch("https://swapi.dev/api/species/")
-            .then((response) => response.json())
-            .then((data) => setSpecies(data.results))
-            .catch((error) => console.log(error));
+        // Check if species data exists in local storage
+        const savedSpecies = localStorage.getItem("species");
+        if (savedSpecies) {
+            setSpecies(JSON.parse(savedSpecies));
+        } else {
+            fetch("https://swapi.dev/api/species/")
+                .then((response) => response.json())
+                .then((data) => {
+                    setSpecies(data.results);
+                    // Save species data in local storage
+                    localStorage.setItem(
+                        "species",
+                        JSON.stringify(data.results)
+                    );
+                })
+                .catch((error) => console.log(error));
+        }
     }, []);
 
     const responsive = {
@@ -31,10 +43,15 @@ const SpeciesSlider = () => {
         },
     };
 
+    const getIdFromUrl = (url) => {
+        const parts = url.split("/");
+        return parts[parts.length - 2];
+    };
+
     return (
         <Wrapper>
-            <h1>Star Wars Species</h1>
-            <Carousel responsive={responsive}>
+            <h1 className="slider-heading">Star Wars Species</h1>
+            <Carousel responsive={responsive} className="species-carousel">
                 {species.map((specie) => (
                     <div key={specie.name} className="species-card">
                         <img
@@ -42,29 +59,30 @@ const SpeciesSlider = () => {
                                 specie.url
                             )}.jpg`}
                             alt={specie.name}
+                            className="species-image"
                         />
                         <div className="species-details">
-                            <h3>{specie.name}</h3>
+                            <h3 className="species-name">{specie.name}</h3>
                             <p>
-                                <span style={{ fontWeight: "bold" }}>
+                                <span className="detail-label">
                                     Classification:
                                 </span>{" "}
                                 {specie.classification}
                             </p>
                             <p>
-                                <span style={{ fontWeight: "bold" }}>
+                                <span className="detail-label">
                                     Designation:
                                 </span>{" "}
                                 {specie.designation}
                             </p>
                             <p>
-                                <span style={{ fontWeight: "bold" }}>
+                                <span className="detail-label">
                                     Average Height:
                                 </span>{" "}
                                 {specie.average_height}
                             </p>
                             <p>
-                                <span style={{ fontWeight: "bold" }}>
+                                <span className="detail-label">
                                     Average Lifespan:
                                 </span>{" "}
                                 {specie.average_lifespan}
@@ -75,12 +93,6 @@ const SpeciesSlider = () => {
             </Carousel>
         </Wrapper>
     );
-};
-
-// Helper function to extract the ID from the species URL
-const getIdFromUrl = (url) => {
-    const parts = url.split("/");
-    return parts[parts.length - 2];
 };
 
 export default SpeciesSlider;

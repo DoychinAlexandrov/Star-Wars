@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "../wrappers/films.css";
 
 const FilmCard = ({ film, onOpenModal }) => {
     return (
@@ -21,13 +22,23 @@ const FilmList = () => {
     const [selectedFilm, setSelectedFilm] = useState(null);
 
     useEffect(() => {
-        axios
-            .get("https://swapi.dev/api/films/")
-            .then((response) => {
-                setFilms(response.data.results);
-                setLoading(false);
-            })
-            .catch((error) => console.log(error));
+        const savedFilms = localStorage.getItem("films");
+        if (savedFilms) {
+            setFilms(JSON.parse(savedFilms));
+            setLoading(false);
+        } else {
+            axios
+                .get("https://swapi.dev/api/films/")
+                .then((response) => {
+                    setFilms(response.data.results);
+                    setLoading(false);
+                    localStorage.setItem(
+                        "films",
+                        JSON.stringify(response.data.results)
+                    );
+                })
+                .catch((error) => console.log(error));
+        }
     }, []);
 
     const openModal = (film) => {
@@ -40,7 +51,7 @@ const FilmList = () => {
 
     return (
         <div>
-            <h1>Star Wars Films</h1>
+            <br />
             {loading ? (
                 <div className="loader">Loading...</div>
             ) : (
@@ -93,6 +104,7 @@ const FilmList = () => {
                     </div>
                 </div>
             )}
+            <br />
         </div>
     );
 };

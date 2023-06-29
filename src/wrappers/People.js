@@ -74,7 +74,7 @@ h1 {
   font-size: 16px;
   border: none;
   border-radius: 20px;
-  background-color: #fff;
+  background-color: rgb(250, 222, 75);
   color: #000;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -85,7 +85,7 @@ h1 {
 }
 
 .pagination-button:disabled {
-  background-color: #ccc;
+  background-color: #rgb(250, 222, 75);
   cursor: not-allowed;
 }
 

@@ -15,12 +15,27 @@ function App() {
         const fetchPeopleData = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(
-                    `https://swapi.dev/api/people/?page=${page}`
+                // Check if data is stored in local storage for the current page
+                const cachedData = localStorage.getItem(
+                    `swapi-people-page-${page}`
                 );
-                setPeople(response.data.results);
-                setIsLoading(false);
-                setIsTransitioning(false);
+                if (cachedData) {
+                    setPeople(JSON.parse(cachedData));
+                    setIsLoading(false);
+                    setIsTransitioning(false);
+                } else {
+                    const response = await axios.get(
+                        `https://swapi.dev/api/people/?page=${page}`
+                    );
+                    setPeople(response.data.results);
+                    setIsLoading(false);
+                    setIsTransitioning(false);
+                    // Store data in local storage for future use
+                    localStorage.setItem(
+                        `swapi-people-page-${page}`,
+                        JSON.stringify(response.data.results)
+                    );
+                }
             } catch (error) {
                 console.error("Error fetching people data:", error);
                 setIsLoading(false);

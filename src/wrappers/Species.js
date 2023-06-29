@@ -46,6 +46,32 @@ h1 {
   padding:16px;
 }
 
+.species-slider {
+  background-color: #222;
+  color: #fff;
+}
+
+.species-card {
+  background-color: rgb(40, 40, 43);
+  color: #000;
+  padding: 20px;
+  margin: 10px;
+}
+
+.species-slider h1 {
+  color: #fff;
+}
+
+.species-details {
+  color: #fff;
+}
+
+.species-details span {
+  font-weight: bold;
+  color: rgb(250, 222, 75);
+}
+
+
 @keyframes moveRight {
   0% {
     transform: translateX(0);

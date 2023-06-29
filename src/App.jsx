@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import {
     Home,
     People,
-    Planets,
+    GalleryPage,
     Story,
     Species,
     Vehicles,
@@ -31,8 +31,8 @@ const router = createBrowserRouter([
                 element: <People />,
             },
             {
-                path: "planets",
-                element: <Planets />,
+                path: "gallery",
+                element: <GalleryPage />,
             },
 
             {
@@ -51,24 +51,6 @@ const router = createBrowserRouter([
     },
 ]);
 
-// function App() {
-//     return (
-//         <BrowserRouter>
-//             <Routes>
-//                 <Route path="/" element={<SharedLayout />}>
-//                     <Route index element={<Home />} />
-//                     <Route path="/people" element={<People />} />
-//                     <Route path="/planets" element={<Planets />} />
-//                     <Route path="/spaceships" element={<Spaceships />} />
-//                     <Route path="/species" element={<Species />} />
-//                     <Route path="/vehicles" element={<Vehicles />} />
-//                     <Route path="/films" element={<Films />} />
-//                 </Route>
-//                 <Route path="/*" element={<Error />} />
-//             </Routes>
-//         </BrowserRouter>
-//     );
-// }
 const App = () => {
     return <RouterProvider router={router} />;
 };

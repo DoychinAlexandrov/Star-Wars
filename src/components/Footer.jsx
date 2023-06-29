@@ -1,4 +1,4 @@
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 import Wrapper from "../wrappers/Footer";
 
 const Footer = () => {
@@ -11,22 +11,36 @@ const Footer = () => {
                     </p>
                     <div className="social-links">
                         <a
-                            href="https://www.facebook.com/StarWars/?locale=bg_BG"
+                            href="https://www.facebook.com/StarWars/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="social-link"
                         >
-                            <FaFacebookF />
+                            <FaFacebook className="social-icon" />
                         </a>
                         <a
-                            href="https://twitter.com/starwars?lang=bg"
+                            href="https://www.instagram.com/starwars/?hl=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="social-link"
                         >
-                            <FaTwitter />
+                            <FaInstagram className="social-icon" />
                         </a>
                         <a
-                            href="https://www.instagram.com/starwars/?hl=bg"
+                            href="https://twitter.com/starwarsuk?lang=en"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="social-link"
                         >
-                            <FaInstagram />
+                            <FaTwitter className="social-icon" />
+                        </a>
+                        <a
+                            href="https://www.youtube.com/watch?v=HnzNZ0Mdx4I"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="social-link"
+                        >
+                            <FaYoutube className="social-icon" />
                         </a>
                     </div>
                 </div>

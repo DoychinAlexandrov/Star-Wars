@@ -1,6 +1,22 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+.opening {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.opening p {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+
 .hero-section {
     position: relative;
     height: 100vh;
@@ -68,8 +84,7 @@ const Wrapper = styled.div`
     border-color: #fade4b;
     border-radius: 25px;
 }
-/* /////
- */
+
 .video-section {
     background-color: #000;
     display: flex;
@@ -80,7 +95,7 @@ const Wrapper = styled.div`
 .video-container {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 aspect ratio for responsive sizing */
+    padding-top: 56.25%; 
 }
 
 .video {
@@ -94,10 +109,10 @@ const Wrapper = styled.div`
 
 @media (max-width: 768px) {
     .video-container {
-        padding-top: 75%; /* Adjust the aspect ratio for smaller screens */
+        padding-top: 75%; 
     }
 }
-/* ////// */
+
 .subscribe-section {
     text-align: center;
     margin: 0 auto;

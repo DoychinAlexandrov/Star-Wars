@@ -6,17 +6,28 @@ const VehicleList = () => {
     const [selectedVehicle, setSelectedVehicle] = useState(null);
 
     useEffect(() => {
-        const fetchVehicles = async () => {
-            try {
-                const response = await fetch("https://swapi.dev/api/vehicles/");
-                const data = await response.json();
-                setVehicles(data.results);
-            } catch (error) {
-                console.log("Error fetching vehicles:", error);
-            }
-        };
+        const savedVehicles = localStorage.getItem("vehicles");
+        if (savedVehicles) {
+            setVehicles(JSON.parse(savedVehicles));
+        } else {
+            const fetchVehicles = async () => {
+                try {
+                    const response = await fetch(
+                        "https://swapi.dev/api/vehicles/"
+                    );
+                    const data = await response.json();
+                    setVehicles(data.results);
+                    localStorage.setItem(
+                        "vehicles",
+                        JSON.stringify(data.results)
+                    );
+                } catch (error) {
+                    console.log("Error fetching vehicles:", error);
+                }
+            };
 
-        fetchVehicles();
+            fetchVehicles();
+        }
     }, []);
 
     const handleVehicleClick = (vehicle) => {
